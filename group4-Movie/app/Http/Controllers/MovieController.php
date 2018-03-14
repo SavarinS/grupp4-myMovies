@@ -37,13 +37,15 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $movie_coverphoto = $request->input('coverphoto');        
         $movie_title = $request->input('title');
         $movie_desc = $request->input('desc');
         $movie_runtimes = $request->input('runtimes');
         $movie_releaseyear = $request->input('releaseyear');
 
         $movie = new Movie();
+        $movie->coverphoto = $movie_coverphoto;        
         $movie->title = $movie_title;
         $movie->desc = $movie_desc;
         $movie->runtimes = $movie_runtimes;
