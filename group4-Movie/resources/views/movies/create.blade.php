@@ -1,7 +1,8 @@
-@extends('layouts/movie')
+@extends('layouts/page')
 
 
 @section('create-movie')
+<h3>Create new movies</h3>
 
 <form method="post"action="{{route('movies.store')}}">
 @csrf

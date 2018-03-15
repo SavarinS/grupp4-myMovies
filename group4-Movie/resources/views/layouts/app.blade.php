@@ -46,7 +46,7 @@
           <a class="p-2 text-muted" href="#">Actors</a>
         </h4>
         <h4>
-          <a class="p-2 text-muted" href="#">Directors</a>
+          <a class="p-2 text-muted" href="{{ route ('directors.index') }}">Directors</a>
         </h4>
         <h4>
           <a class="p-2 text-muted" href="#">Genre</a>

@@ -36,10 +36,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Movies</a>
+          <a class="nav-link" href="{{ route ('movies.index') }}">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Directors</a>
+          <a class="nav-link" href="{{ route ('directors.index') }}">Directors</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Actors</a>
@@ -56,8 +56,10 @@
 
 
   <div class="container">
-    
     @yield('form')
+    @yield('page')
+    @yield('create-movie')
+    @yield('movie-index')
   </div>
 
 
