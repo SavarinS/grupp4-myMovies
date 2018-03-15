@@ -8,7 +8,7 @@
 <h2>Movies Lists </h2>
 @foreach($movies as $movie)
 
-{{--  {{$movie->coverphoto}} <br>  --}}
+<button><img src="{{$movie->coverphoto}}"></button><br>  
 <h4>Movie Title : {{$movie->title}}</h4> 
 <p>Description : {{$movie->desc}}</p>  
 <p>Run Times :{{$movie->runtimes}}</p>  
