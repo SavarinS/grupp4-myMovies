@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * call home page
+     * Create a new controller instance.
+     *
+     * @return void
      */
+    public function __construct()
+    {
+    }
 
-     public function home(){
-        return view('welcome');
-     }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
 }
