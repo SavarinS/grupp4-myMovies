@@ -42,15 +42,22 @@ class DirectorController extends Controller
             'name'=> 'required',
             'biography'=>'required'
         ]);*/
-        //create a new director using the require dat
+
+        //save data to database
+        $director_name = $request->input('name');
+        //$movie_id = $request->input('movie_id');
+        $director_info = $request->input('info');
+
+        
+        //create a new director using the require data
         $director = new Director();
         $director->name = $director_name;
         $director->info = $director_info;
         $director->save();
 
-        //save data to database
-        $director_name = $request->input('name');
-        $director_info = $request->input('info');
+        
+        
+
         //redirect to the director page or homepage?
        return redirect()->route('directors.index');
     }
