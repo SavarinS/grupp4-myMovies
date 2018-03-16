@@ -5,10 +5,11 @@
  ?>
 
 @section('movie-index')
+
 <h2>My favourite movies</h2>
 @foreach($movies as $movie)
 
-{{--  {{$movie->coverphoto}} <br>  --}}
+<img src="{{$movie->coverphoto}}"><br>
 <h4>Movie Title : {{$movie->title}}</h4> 
 <p>Description : {{$movie->desc}}</p>  
 <p>Run Times :{{$movie->runtimes}}</p>  

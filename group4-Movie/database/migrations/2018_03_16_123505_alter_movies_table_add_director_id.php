@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterMoviesTableAddCoverphoto extends Migration
+class AlterMoviesTableAddDirectorId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AlterMoviesTableAddCoverphoto extends Migration
     public function up()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->string('coverphoto')->after('id');
+            $table->integer('director_id')->nullable()->unsigned()->after('releaseyear');
         });
     }
 
@@ -26,7 +26,7 @@ class AlterMoviesTableAddCoverphoto extends Migration
     public function down()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->dropColumn('coverphoto');
+            $table->dropColumn('director_id');
         });
     }
 }
