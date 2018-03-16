@@ -12,10 +12,10 @@
 */
 
 //Home
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', 'HomeController@home')->name('home');
+Route::get('/', function () {
+    return redirect()->route('home');
+});
+Route::get('/home', 'HomeController@index')->name('home');
 
 // Movies
 Route::get('/movies', 'MovieController@index')->name('movies.index');
@@ -27,3 +27,5 @@ Route::get('/directors', 'DirectorController@index')->name('directors.index');
 //Route::get('/directors', 'DirectorController@show')->name('director.show');
 Route::get('/directors/create', 'DirectorController@create')->name('directors.create');
 Route::post('/directors/create', 'DirectorController@store')->name('directors.store');
+
+Auth::routes();
