@@ -67,7 +67,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('movies/show', ['movie' =>$movie]);
     }
 
     /**
@@ -78,7 +78,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return view('movies/edit', ['movie' => $movie]);
     }
 
     /**
@@ -90,7 +90,21 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $movie_coverphoto = $request->input('coverphoto');        
+        $movie_title = $request->input('title');
+        $movie_desc = $request->input('desc');
+        $movie_runtimes = $request->input('runtimes');
+        $movie_releaseyear = $request->input('releaseyear');
+
+        $movie->coverphoto = $movie_coverphoto; 
+        $movie->title = $movie_title;
+        $movie->desc = $movie_desc;
+        $movie->runtimes = $movie_runtimes;
+        $movie->releaseyear = $movie_releaseyear;
+        $movie->save();
+        
+
+        return redirect()->route('movies.show', ['movie' => $movie->id]);
     }
 
     /**
