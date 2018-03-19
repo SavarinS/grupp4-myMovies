@@ -6,11 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    /**
-     * Eloquent relationship
-     */
-
-     function director (){
-         $this->belongsToMany(App\Director);
-     }
+    //
 }
