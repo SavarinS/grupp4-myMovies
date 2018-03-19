@@ -17,7 +17,7 @@ class AlterDirectorsTable extends Migration
     {
         Schema::table('directors', function (Blueprint $table) {
             $table->text('info')->change();
-            $table->integer('movie_id', 10)->nullable()->change();
+            //$table->integer('movie_id', 10)->nullable()->change();
         });
     }
 

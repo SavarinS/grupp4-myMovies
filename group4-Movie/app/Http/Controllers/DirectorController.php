@@ -70,7 +70,7 @@ class DirectorController extends Controller
      */
     public function show(Director $director)
     {
-        //
+        return view('directors/show',  ['director' => $director]);
     }
 
     /**
