@@ -27,14 +27,14 @@
       <ul class="nav justify-content-end">
 
         @guest
-          <li class="nav-item">
-            <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Sign in</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-sm btn-outline-secondary" href="{{route('register')}}">Sign up</a>
-          </li>
+        <li class="nav-item">
+          <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-sm btn-outline-secondary" href="{{route('register')}}">Sign up</a>
+        </li>
         @else
-          <a href="{{ route('logout') }}">You are logged in!</a>
+        <a href="{{ route('logout') }}">You are logged in!</a>
         @endguest
 
       </ul>
@@ -43,6 +43,9 @@
 
     <div class="nav-scroller py-1 mb-2">
       <nav class="nav d-flex justify-content-between">
+        <h4>
+          <a class="p-2 text-muted" href="{{route('home')}}">Home</a>
+        </h4>
         <h4>
           <a class="p-2 text-muted" href="{{route('movies.index')}}">Movies</a>
         </h4>
