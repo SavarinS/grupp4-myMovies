@@ -8,7 +8,7 @@ class Director extends Model
 {
     /**
      * To protect the form - users are not allowed to change input
-    protected $fillable = ['name', 'info'];
+     *protected $fillable = ['name', 'info'];
     */
 
     
