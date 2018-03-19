@@ -29,3 +29,16 @@ Route::get('/directors/create', 'DirectorController@create')->name('directors.cr
 Route::post('/directors/create', 'DirectorController@store')->name('directors.store');
 
 Auth::routes();
+
+
+
+// Genres
+
+Route::get('/genres', 'GenreController@index')->name('genres.index');
+
+Route::post('/genres', 'GenreController@store')->name('genres.store');
+Route::get('/genres/create', 'GenreController@create')->name('genres.create');
+
+Route::get('/genres/{genre}/edit', 'GenreController@edit')->name('genres.edit');
+Route::get('/genres/{genre}', 'GenreController@show')->name('genres.show');
+Route::put('/genres/{genre}', 'GenreController@update')->name('genres.update');

@@ -53,7 +53,7 @@
           <a class="p-2 text-muted" href="{{ route ('directors.index') }}">Directors</a>
         </h4>
         <h4>
-          <a class="p-2 text-muted" href="#">Genre</a>
+          <a class="p-2 text-muted" href="{{ route ('genres.index') }}">Genres</a>
         </h4>
 
       </nav>
