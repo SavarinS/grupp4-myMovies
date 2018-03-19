@@ -18,6 +18,6 @@ class Director extends Model
      */
 
      public function movies (){
-         return $this->movies('App\Movie');
+         return $this->hasMany('App\Movie');
      }
 }
