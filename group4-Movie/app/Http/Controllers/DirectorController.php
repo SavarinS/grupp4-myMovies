@@ -45,7 +45,6 @@ class DirectorController extends Controller
 
         //save data to database
         $director_name = $request->input('name');
-        //$movie_id = $request->input('movie_id');
         $director_info = $request->input('info');
 
         
@@ -55,10 +54,7 @@ class DirectorController extends Controller
         $director->info = $director_info;
         $director->save();
 
-        
-        
-
-        //redirect to the director page or homepage?
+        //redirect to the director page 
        return redirect()->route('directors.index');
     }
 
@@ -81,7 +77,7 @@ class DirectorController extends Controller
      */
     public function edit(Director $director)
     {
-        //
+        return view('directors/edit',  ['director' => $director]);
     }
 
     /**
@@ -93,7 +89,17 @@ class DirectorController extends Controller
      */
     public function update(Request $request, Director $director)
     {
-        //
+        //save data to database
+        $director_name = $request->input('name');
+        $director_info = $request->input('info');
+
+        $director->name = $director_name;
+        $director->info = $director_info;
+        $director->save();
+
+         //redirect to the director list 
+       return redirect()->route('directors.show', ['director' => $director->id]);
+
     }
 
     /**

@@ -28,9 +28,13 @@ Route::put('/movies/{movie}', 'MovieController@update')->name('movies.update');
 
 //Directors
 Route::get('/directors', 'DirectorController@index')->name('directors.index');
-Route::get('/directors/create', 'DirectorController@create')->name('directors.create');
 Route::post('/directors', 'DirectorController@store')->name('directors.store');
+Route::get('/directors/create', 'DirectorController@create')->name('directors.create');
+
 Route::get('/directors/{director}', 'DirectorController@show')->name('directors.show');
+
+Route::get('/directors/{director}/edit', 'DirectorController@edit')->name('directors.edit');
+Route::put('/directors/{director}', 'DirectorController@update')->name('directors.update');
 
 
 Auth::routes();
