@@ -26,7 +26,7 @@
     <header class="blog-header py-3">
       <ul class="nav justify-content-end">
 
-        @guest
+        <!-- @guest
         <li class="nav-item">
           <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Sign in</a>
         </li>
@@ -35,7 +35,24 @@
         </li>
         @else
         <a href="{{ route('logout') }}">You are logged in!</a>
-        @endguest
+        @endguest -->
+
+        @if(\Auth::check())
+        <li class="nav-item">
+        <h4>Welcome, you are logged in!</h4>
+        <a href="{{route('logout')}}">Log out</a>
+        </li>
+        @else
+        <!-- <h2> Please log in</h2> -->
+        <!-- <a href="{{route('login')}}"></a> -->
+        <li class="nav-item">
+          <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-sm btn-outline-secondary" href="{{route('register')}}">Sign up</a>
+        </li>
+
+        @endif
 
       </ul>
 
