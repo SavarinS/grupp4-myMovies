@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    public function directors()
+    public function director()
     {
-        return $this->belongsToMany('App\Director');
+        return $this->belongsTo('App\Director');
+    }
+
+     public function genres()
+    {
+        return $this->belongsToMany('App\Genre');
     }
 }

@@ -8,18 +8,16 @@
 <ul>
     
     @foreach($genres as $genre)
-    <li>
-    <a href="{{route('genres.show', ['genre'=>$genre->id])}}">{{$genre->name}}</a>
-     
-    </li>
+        <li>
+            <a href="{{route('genres.show', ['genre'=>$genre->id])}}">{{$genre->name}}</a>
+        </li>
     @endforeach
 
     <br>
 
-
     <div>
-            <button type="button" class="btn btn-outline-primary"><a href="{{route('genres.create')}} ">Create new Genre</button>
-        </div>
+        <button type="button" class="btn btn-outline-primary"><a href="{{route('genres.create')}} ">Create new Genre</button>
+    </div>
 </ul>
 
 @endsection

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Director;
 use App\Movie;
+use App\Genre;
+//use App\Actor;
+
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -18,6 +22,7 @@ class MovieController extends Controller
       return view('movies/index', ['movies' =>$movies]);
 
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -25,9 +30,19 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-       return view('movies/create');
-
+    {   
+        $movies = Movie::orderBy('title')->get();
+        $directors = Director::orderBy('name')->get();
+        $genres = Genre::orderBy('name')->get();
+        //$actors = Actor::orderBy('namn')->get(); // NAMN not NAME from Rattanasak 
+        
+// place this right after 'actors' => $actors with , after $genres
+       
+       return view('movies/create', [
+        'movies' => $movies,
+           'directors' => $directors, 
+           'genres' => $genres
+           ]);
     }
 
     /**
@@ -43,18 +58,19 @@ class MovieController extends Controller
         $movie_desc = $request->input('desc');
         $movie_runtimes = $request->input('runtimes');
         $movie_releaseyear = $request->input('releaseyear');
+        $movie_director = $request->input('director');
+        
 
         $movie = new Movie();
-        $movie->coverphoto = $movie_coverphoto;        
+        $movie->coverphoto = $movie_coverphoto; 
         $movie->title = $movie_title;
         $movie->desc = $movie_desc;
         $movie->runtimes = $movie_runtimes;
         $movie->releaseyear = $movie_releaseyear;
+        $movie->director_id = $movie_director;   
         $movie->save();
 
         return redirect()->route('movies.index');
-
-
 
 
     }
@@ -66,7 +82,7 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Movie $movie)
-    {
+    {   
         return view('movies/show', ['movie' =>$movie]);
     }
 
@@ -78,7 +94,14 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('movies/edit', ['movie' => $movie]);
+        // place this after genres. ** namn not Name  // 'actors' =>Actor::orderBy('namn')->get(),
+        
+        return view('movies/edit', [
+            'movie' => $movie, 
+            'directors' =>Director::orderBy('name')->get(),
+            'genres' =>Genre::orderBy('name')->get(),
+        ]);
+
     }
 
     /**
@@ -95,14 +118,18 @@ class MovieController extends Controller
         $movie_desc = $request->input('desc');
         $movie_runtimes = $request->input('runtimes');
         $movie_releaseyear = $request->input('releaseyear');
+        $movie_director = $request->input('director');
+        
+        //$movie->actors()->sync($request->input('actors'));
+        $movie->genres()->sync($request->input('genres'));
 
         $movie->coverphoto = $movie_coverphoto; 
         $movie->title = $movie_title;
         $movie->desc = $movie_desc;
         $movie->runtimes = $movie_runtimes;
         $movie->releaseyear = $movie_releaseyear;
-        $movie->save();
-        
+        $movie->director_id = $movie_director;
+        $movie->save();        
 
         return redirect()->route('movies.show', ['movie' => $movie->id]);
     }
