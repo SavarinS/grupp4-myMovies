@@ -9,7 +9,21 @@
           <input type="text" name="name" class="form-control" value="" placeholder="add movie's genre here">
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Create Movie Genre">
-    </form>
+        <div>
+          Select Movies:<br>
+          <select name="movies[]" multiple="multiple">
+            @foreach($movies as $movie)
+            <option value="{{ $movie->id }}">{{ $movie->title }}
+            </option>
+            @endforeach
+          </select>
+        </div>
+
+        <br>
+
+        <div>
+          <input type="submit" class="btn btn-primary" value="Create Movie Genre">
+        </div>
+</form>
 
 @endsection

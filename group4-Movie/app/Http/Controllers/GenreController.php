@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Genre;
+use App\Movie;
+
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -21,16 +23,28 @@ class GenreController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * This is form for create Genres And Can select movie that belongsTo Gengres
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('genres/create');
+    { 
+        
+        $genres = Genre::orderBy('name')->get();
+        $movies = Movie::orderBy('title')->get();
+
+         return view('genres/create', [
+             'genres' => $genres,
+             'movies' => $movies
+             ]);
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * Store from input here and Then Create new Genre and SAVE
+     * 
+     * we want to return output to index as well
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,6 +52,7 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         $genre_name = $request->input('name');
+        
 
         $genre = new Genre();
         $genre->name = $genre_name;
@@ -66,7 +81,10 @@ class GenreController extends Controller
      */
     public function edit(Genre $genre)
     {
-        return view('genres/edit', ['genre'=>$genre]);
+        return view('genres/edit', [
+            'genre'=>$genre, 
+            'movies' =>Movie::orderBy('title')->get(), 
+        ]);
     }
 
     /**
@@ -79,6 +97,8 @@ class GenreController extends Controller
     public function update(Request $request, Genre $genre)
     {
         $genre_name = $request->input('name');
+        
+        $genre->movies()->sync($request->input('movies'));
 
         $genre->name = $genre_name;
         $genre->save();
