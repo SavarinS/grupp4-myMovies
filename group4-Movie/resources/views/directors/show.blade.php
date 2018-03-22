@@ -1,5 +1,5 @@
 @extends('layouts/app') @section('content')
-
+<div class="container">
 <div class="card">
   <div class="card-header">
     <h2>
@@ -11,14 +11,28 @@
     <p>{{ $director->info }}</p>
     
   </div>
-  <div class="container">
-    <a href="{{route('directors.edit', ['director' => $director->id])}} ">Edit</button><br>
-    
+
+  <div class="card-body">
+    Movies :
+    <ul> 
+    @foreach($director->movies as $movie)
+    <li> {{$movie->title}}</li>
+    @endforeach
+    </ul>
   </div>
+
 </div>
 
-
-<a href="{{route('directors.index')}} ">Back to director list</button>
+<br>
+<div>
+  
+    <button class="btn btn-outline-primary">
+      <a href="{{route('directors.edit', ['director' => $director->id])}} ">Edit Director
+      </button>
+    
+    <button class="btn btn-outline-success">
+  <a href="{{route('directors.index')}} ">Back to director list
+  </button>
   <br>
   
 

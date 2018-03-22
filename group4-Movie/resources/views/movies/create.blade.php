@@ -1,6 +1,8 @@
 @extends('layouts/app')
 
 @section('content')
+
+
   <h3>Create new movies</h3>
   <br>
 

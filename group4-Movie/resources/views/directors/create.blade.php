@@ -10,11 +10,12 @@
         <input type="text" class="form-control" placeholder="Director's name" name="name" required><br>
         <!-- <textarea class="form-control" name="movie_id" placeholder="Fill in director's work" required></textarea><br> -->
 
-        <textarea class="form-control" name="info" placeholder="Fill in director's biography" required></textarea><br>
+        <textarea class="form-control" name="info" placeholder="Fill in director's biography" required>
+        </textarea><br>
 
-
+          
         <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+    </div> 
 </form>
 
 <!-- show alert messages when users don't fill in the form -->

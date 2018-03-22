@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Director;
+
 use Illuminate\Http\Request;
 
 class DirectorController extends Controller
@@ -26,7 +27,13 @@ class DirectorController extends Controller
      */
     public function create()
     {
-        return view('directors/create');
+        $directors = Director::orderBy('name')->get();
+       
+
+        return view('directors/create', ['directors' => $directors]);
+           
+
+        
     }
 
     /**
@@ -77,7 +84,9 @@ class DirectorController extends Controller
      */
     public function edit(Director $director)
     {
-        return view('directors/edit',  ['director' => $director]);
+        return view('directors/edit', ['director' => $director]);
+            
+            
     }
 
     /**
@@ -97,6 +106,7 @@ class DirectorController extends Controller
         $director->info = $director_info;
         $director->save();
 
+       
          //redirect to the director list 
        return redirect()->route('directors.show', ['director' => $director->id]);
 
