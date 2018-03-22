@@ -34,10 +34,11 @@
           <a class="btn btn-sm btn-outline-secondary" href="{{route('register')}}">Sign up</a>
         </li>
         @else
-        <a href="{{ route('logout') }}">You are logged in!</a>
+        <a href="{{ route('logout') }}">Welcome, you are logged in!</a>
+    
         @endguest -->
 
-        @if(\Auth::check())
+       @if(\Auth::check())
         <li class="nav-item">
         <h4>Welcome, you are logged in!</h4>
         <a href="{{route('logout')}}">Log out</a>
@@ -57,29 +58,29 @@
       </ul>
 
     </header>
+    <div class="container">
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="{{route('home')}}">Home</a>
+        <a class="navbar-brand" href="{{route('movies.index')}}">Movies</a>
+        <a class="navbar-brand" href="{{route('directors.index')}}">Directors</a>
+        <a class="navbar-brand" href="#">Actors</a>
+        <a class="navbar-brand" href="{{ route ('genres.index') }}">Genres</a>
 
-    <div class="nav-scroller py-1 mb-2">
-      <nav class="nav d-flex justify-content-between">
-        <h4>
-          <a class="p-2 text-muted" href="{{route('home')}}">Home</a>
-        </h4>
-        <h4>
-          <a class="p-2 text-muted" href="{{route('movies.index')}}">Movies</a>
-        </h4>
-        <h4>
-          <a class="p-2 text-muted" href="#">Actors</a>
-        </h4>
-        <h4>
-          <a class="p-2 text-muted" href="{{ route ('directors.index') }}">Directors</a>
-        </h4>
-        <h4>
-          <a class="p-2 text-muted" href="{{ route ('genres.index') }}">Genres</a>
-        </h4>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
 
       </nav>
+      
+    </div>
+    <div class="container">
+    @yield('content')
     </div>
 
-    @yield('content')
+
+
+    
 
   </div>
 
