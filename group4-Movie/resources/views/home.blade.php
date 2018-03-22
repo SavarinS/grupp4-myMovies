@@ -14,66 +14,26 @@
 <div class="container">
   <div class="row">
     <!-- box1 -->
+    @foreach($movies as $movie)
     <div class="col-sm-6">
       <div class="card text-center">
         <div class="card-header">
-          Featured
+        
+        {{$movie->title}} ({{$movie->releaseyear}})
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">About the film:</h5>
+          <img src="{{$movie->coverphoto}}" alt="image">
+          <p>{{$movie->desc}}</p>
+          
+         <a href="{{route('movies.show', ['movie'=>$movie->id])}}" class="btn btn-primary">Read more</a> 
         </div>
       </div>
 
     </div>
+    @endforeach
 
-    <!-- box2 -->
-    <div class="col-sm-6">
-      <div class="card text-center">
-        <div class="card-header">
-          Featured
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+    
 
-    </div>
-    <div class="w-100"></div>
-
-    <!-- box3 -->
-    <div class="col-sm-6">
-      <div class="card text-center">
-        <div class="card-header">
-          Featured
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- box4 -->
-    <div class="col-sm-6">
-      <div class="card text-center">
-        <div class="card-header">
-          Featured
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 @endsection
