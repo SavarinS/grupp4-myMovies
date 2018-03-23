@@ -161,7 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Rateable
-        willvincent\Rateable\RateableServiceProvider::class,
+        //willvincent\Rateable\RateableServiceProvider::class,
 
     ],
 

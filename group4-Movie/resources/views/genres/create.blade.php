@@ -22,7 +22,7 @@
         <br>
 
         <div>
-          <input type="submit" class="btn btn-primary" value="Create Movie Genre">
+          <input type="submit" class="btn btn-primary" value="Update">
         </div>
 </form>
 

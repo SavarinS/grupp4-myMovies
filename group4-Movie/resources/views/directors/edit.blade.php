@@ -16,7 +16,7 @@
 
         <textarea class="form-control" name="info"  value="{{ $director->info }}" required>{{$director->info}}</textarea><br>
 
-        <button type="submit" class="btn btn-primary">Submit to update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </div>
 </form>
 

@@ -1,112 +1,63 @@
-@extends('layouts/app')
+@extends('layouts/app') @section('content')
 
-@section('content')
+<div class="card-header">
+    <div class="row">
+        <div class="col-8">
+            <h5>
+                <strong>{{$movie->title}}</strong>
+            </h5>
+        </div>
 
-<div class="card">
- <div class="card-header">
-     <h2>
-         Movie's Title : {{$movie->title}}
-    </h2>
-</div>
-<div class="card-body">
-<img src="{{$movie->coverphoto}}" class="img-thumbnail"><br>
-
-<table class="table"> 
-    <thead>
-        <tr>
-         
-        <th>Description</th>
-        <th>Run times</th> 
-        <th>Release Year</th> 
-        
-    </tr>      
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{$movie->desc}}</td>
-            <td>{{$movie->runtimes}}</td>
-            <td>{{$movie->releaseyear}}</td>
-        </tr>
-        <tr>
-            <th>Director:</th>            
-        </tr>
-        <tr>
-            <td>{{$movie->director->name}} </td>
-        </tr>
-
-        <tr>
-                <th>Genres:</th>            
-            </tr>
-            <tr>
-                <td>
-                    <ul>
-                        @foreach($movie->genres as $genre)
-                        <li> {{$genre->name}}</li>
-                        @endforeach
-                    </ul>
-                </td>
-            </tr>
-        
-            <tr>
-                    <th>Actors:</th>            
-                </tr>
-                <tr>
-                    <td>
-                        <ul>
-                            {{--  @foreach($movie->actors as $actor)
-                            <li> {{$actor->namn}}</li>
-                            @endforeach  --}}
-                        </ul>
-                    </td>
-                </tr>
-    
-    </tbody>
-
-</table>
-
-
-{{--  if I want to link director name to his/her info I got undefined director  --}}
-
-{{--  Director : <a href="{{route('directors.show', ['director' => $director->id])}}">{{$movie->director->name}}</a><br>  --}}
-
-{{--  Actors info will be here Waiting from Rattanasak!!!!  --}}
-{{--  Actors : 
-<ul>
-    @foreach($movie->actors as $actor)
-        <li> {{$actor->namn}}</li>
-    @endforeach
-</ul>  --}}
-
-{{--  Rate this movie  --}}
- Rate this movie:
- @foreach(range(1,5) as $rating)
- <a href="{{route('movies.index', ['movie' => $movie->id,'rating' => $rating])}}">{{$rating}}</a>
- @endforeach
-
- 
-
-</div>
-{{--  end card-body   --}}
-
-</div> 
-<br>
-<div>
-
-<button class="btn btn-outline-primary">
-    <a href="{{route('movies.edit', ['movie'=> $movie->id])}}">Edite Movie</a>
-</button>
-
-<button class="btn btn-outline-success">
-        <a href="{{route('movies.index')}} ">Back to Movies</a>
-</button>
-<br>
+        @if(!Auth::guest())
+        <div class="col-4">
+            <button class="btn btn-outline-primary">
+                <a href="{{route('movies.edit', ['movie'=> $movie->id])}}">Edite Movie</a>
+            </button>
+            <button class="btn btn-outline-primary">
+                <a href="{{route('movies.index')}} ">To movie list</a>
+            </button>
+        </div>
+        @endif
+    </div>
 </div>
 
-{{--  for rateable  --}}
-<script type="text/javascript">
+<div class="row">
+    <div class="col-3">
+        <img src="{{$movie->coverphoto}}" alt="image">
+    </div>
+    <div class="col-9">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Description: </strong>{{$movie->desc}}</li>
+                <li class="list-group-item">
+                    <strong>Run Times: </strong>{{$movie->runtimes}} mins</li>
+                <li class="list-group-item">
+                    <strong>Director:</strong>{{$movie->director->name}}</li>
+                @foreach($movie->genres as $genre)
+                <li class="list-group-item">
+                    <strong>Genre:</strong>{{$genre->name}}</li>
+                @endforeach
+                <li class="list-group-item">
+                    <strong>Actors: </strong>Names</li>
 
-    $("#input-id").rating();
 
-</script>
+                {{-- Actors info will be here Waiting from Rattanasak!!!! --}} {{-- Actors :
+                <ul>
+                    @foreach($movie->actors as $actor)
+                    <li> {{$actor->namn}}</li>
+                    @endforeach
+                </ul> --}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 @endsection

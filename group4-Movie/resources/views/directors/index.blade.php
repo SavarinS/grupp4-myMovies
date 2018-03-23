@@ -1,36 +1,34 @@
-@extends('layouts/app') 
-@section('content')
+@extends('layouts/app') @section('content')
 
-<div class="container"> 
-    <div class="card">
-        <div class="card-header">
-            <h3>My favourit directors</h3>
-        </div>
-        <div class="card-body">
-<ul>
-    @foreach ($directors as $director)
-        <!-- <li>{{ $director->name }}</li> -->
-        <li><a href="{{ route('directors.show', ['director' => $director]) }}">{{ $director->name}} </a></li>
-    @endforeach
-</ul>
-</div>
+
+<div class="card-header">
+  <h3>My favourite directors</h3>
+  @if(!Auth::guest())
+  <button type="button" class="btn btn-outline-primary">
+    <a href="{{route('directors.create')}}">Create new director</button>
+    @endif
+</div><br>
+
+<div class="card">
+    
+    <ul class="list-group list-group-flush">
+        @foreach ($directors as $director)
+        <!-- <li>{{ $director->name }} -->
+        <li class="list-group-item">
+            {{ $director->name}} <br>
+        
+        <a href="{{ route('directors.show', ['director' => $director]) }}" class="btn btn-warning">Read more</a><br>
+        </li>
+        
+        @endforeach
+    </ul>
+
 </div>
 <br>
-
-<div>
-
-<button type="button" class="btn btn-outline-primary"><a href="{{route('directors.create')}} ">Create new director
-</button>
+<br>
 
 
-<button type="button" class="btn btn-outline-success">
-<a href="{{ route ('home') }}"> Back to Home</a>
-</button>
+
 </div>
-</div>
-
 
 @endsection
-
-
-

@@ -1,55 +1,39 @@
+@extends('layouts/app') @section('content')
 
-@extends('layouts/app')
-
-@section('content')
-
-{{--  get movie  --}}
-
-<?php
-// $movie = $_GET['movie'];
-// $rating = $_GET['rating'];
-// echo $movie."=".$rating;
-?>
-
-{{--  {{$movie = $_GET['movie']}}
-{{$rating = $_GET['rating']}}
- {{$movie."=".$rating}}  --}}
+<div class="card-header">
+  <h3>My favourite movies</h3>
+  @if(!Auth::guest())
+  <button type="button" class="btn btn-outline-primary">
+    <a href="{{route('movies.create')}} ">Create new movies</button>
+  @endif
+</div><br>
 
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-          <h2>My favourite movies</h2>
-        </div>
-  <div class="card-body">
-      
+  <div class="row">
+    <!-- box1 -->
+    @foreach($movies as $movie)
+    <div class="col-md-3">
+      <div class="card text-center">
+          <div class="card-header">
+          
+            <h5><strong>{{$movie->title}}</strong></h5>
+            <p>({{$movie->releaseyear}})</p>
+            <p>{{$movie->runtimes}} minutes</p>
+          </div>
+          <div class="card-body">
+            <img src="{{$movie->coverphoto}}" alt="image"><br>
+            <a href="{{route('movies.show', ['movie'=>$movie->id])}}" class="btn btn-warning">Read more</a> 
+          </div>
+      </div>
 
-  @if($movies->count())
-
-  @foreach($movies as $movie)
-
+    </div>
+    @endforeach
+  </div>
   
-
-    <img src="{{$movie->coverphoto}}" alt=""> <br>
-    <h4>Movie Title : <a href="{{route('movies.show', ['movie'=>$movie->id])}}"> {{$movie->title}}</a></h4>
-    <p>Description : {{$movie->desc}}</p>
-    <p>Run Times :{{$movie->runtimes}} mins</p>
-    <p>Release Year : {{$movie->releaseyear}} </p>
-
     
 
-  @endforeach
-  @endif
+</div>
 
-</div>
-</div>
-<br>
-
-  <div>
-      <button type="button" class="btn btn-outline-primary"><a href="{{route('movies.create')}} ">Create new movies</button>
-      
-</div>
-</div>
 
 
 @endsection
-

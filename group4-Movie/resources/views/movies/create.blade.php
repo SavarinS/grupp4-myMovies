@@ -61,7 +61,7 @@
     <br>
 
     <div>
-      <input type="submit" class="btn btn-primary" value="Create Movie">
+      <input type="submit" class="btn btn-primary" value="Update">
     </div>
   <br>
   <br>

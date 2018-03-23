@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use Rateable;
+    //use Rateable;
 
     public function director()
     {
