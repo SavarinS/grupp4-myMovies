@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rating;
+use App\User;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -14,7 +15,9 @@ class RatingController extends Controller
      */
     public function index()
     {
-        //
+        $ratings = Rating::get();
+
+        return view('movies/show', ['ratings' => $ratings]);
     }
 
     /**
