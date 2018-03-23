@@ -7,6 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public function movies()
+    {
+        return $this->belongsToMany('App\Movie');
+    }
+
     use Notifiable;
 
     /**
@@ -26,4 +31,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
 }

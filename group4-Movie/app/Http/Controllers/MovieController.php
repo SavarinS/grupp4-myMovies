@@ -70,6 +70,24 @@ class MovieController extends Controller
         $movie->director_id = $movie_director;   
         $movie->save();
 
+        //  Rateable been to Movie model use rateable and the top
+
+        request()->validate(['rate' => 'required']);
+
+        $movie = Movie::find($request->id);
+
+
+
+        $rating = new \willvincent\Rateable\Rating;
+
+        $rating->rating = $request->rate;
+
+        $rating->user_id = auth()->user()->id;
+
+
+        $movie->ratings()->save($rating);
+
+
         return redirect()->route('movies.index');
 
 
@@ -122,6 +140,8 @@ class MovieController extends Controller
         
         //$movie->actors()->sync($request->input('actors'));
         $movie->genres()->sync($request->input('genres'));
+        $movie->users()->sync($request->input('users'));
+        
 
         $movie->coverphoto = $movie_coverphoto; 
         $movie->title = $movie_title;

@@ -46,18 +46,7 @@
                     </ul>
                 </td>
             </tr>
-        <tr>
-                <th>Genres:</th>            
-            </tr>
-            <tr>
-                <td>
-                    <ul>
-                        @foreach($movie->genres as $genre)
-                        <li> {{$genre->name}}</li>
-                        @endforeach
-                    </ul>
-                </td>
-            </tr>
+        
             <tr>
                     <th>Actors:</th>            
                 </tr>
@@ -88,12 +77,21 @@
     @endforeach
 </ul>  --}}
 
+{{--  Rate this movie  --}}
+ Rate this movie:
+ @foreach(range(1,5) as $rating)
+ <a href="{{route('movies.index', ['movie' => $movie->id,'rating' => $rating])}}">{{$rating}}</a>
+ @endforeach
+
+ 
+
 </div>
 {{--  end card-body   --}}
 
 </div> 
 <br>
 <div>
+
 <button class="btn btn-outline-primary">
     <a href="{{route('movies.edit', ['movie'=> $movie->id])}}">Edite Movie</a>
 </button>
@@ -103,4 +101,12 @@
 </button>
 <br>
 </div>
+
+{{--  for rateable  --}}
+<script type="text/javascript">
+
+    $("#input-id").rating();
+
+</script>
+
 @endsection
