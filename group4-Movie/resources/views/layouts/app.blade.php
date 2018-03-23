@@ -63,7 +63,7 @@
         <a class="navbar-brand" href="{{route('home')}}">Home</a>
         <a class="navbar-brand" href="{{route('movies.index')}}">Movies</a>
         <a class="navbar-brand" href="{{route('directors.index')}}">Directors</a>
-        <a class="navbar-brand" href="#">Actors</a>
+        <a class="navbar-brand" href="{{route('actors.index')}}">Actors</a>
         <a class="navbar-brand" href="{{ route ('genres.index') }}">Genres</a>
 
         <form class="form-inline my-2 my-lg-0">

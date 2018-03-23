@@ -39,6 +39,16 @@ Route::put('/directors/{director}', 'DirectorController@update')->name('director
 
 Auth::routes();
 
+//Actors
+Route::get('/actors', 'ActorController@index')->name('actors.index');
+Route::post('/actors', 'ActorController@store')->name('actors.store');
+Route::get('/actors/create', 'ActorController@create')->name('actors.create');
+
+Route::get('/actors/{actor}', 'ActorController@show')->name('actors.show');
+
+Route::get('/actors/{actor}/edit', 'ActorController@edit')->name('actors.edit');
+Route::put('/actors/{actor}', 'ActorController@update')->name('actors.update');
+
 
 
 // Genres
