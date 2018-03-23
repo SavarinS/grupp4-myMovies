@@ -58,19 +58,17 @@
                 </li>
 
             </ul>
+            @if(!Auth::guest())
 Rate This movie: 
 <button>
-        <form action="">
-                <input type="radio" name="gender" value="male"> Male<br>
-                <input type="radio" name="gender" value="female"> Female<br>
-                <input type="radio" name="gender" value="other"> Other
-              </form>
-              
-</button>
-            
-        {{--  @foreach(range(1,5) as $rating)
+    @foreach(range(1,5) as $rating)
         <a href="{{route('movies.show', ['movie' =>$movie->id, 'rating' => $rating])}}">{{$rating}}</a>
-        @endforeach  --}}
+        @endforeach
+        
+</button>
+@endif
+            
+        
 
     
         </div>
