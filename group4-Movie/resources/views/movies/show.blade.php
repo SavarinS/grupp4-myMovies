@@ -40,15 +40,14 @@
                 @endforeach
                 <li class="list-group-item">
                     <strong>Actors: </strong>Names</li>
-
-
-                {{-- Actors info will be here Waiting from Rattanasak!!!! --}} {{-- Actors :
-                <ul>
-                    @foreach($movie->actors as $actor)
-                    <li> {{$actor->namn}}</li>
-                    @endforeach
-                </ul> --}}
-
+                
+                @foreach($movie->actors as $actor)
+                <li class="list-group-item">
+                    {{$actor->namn}}</li>
+                @endforeach
+            
+                
+                
                 <li class="list-group-item">
                         <strong>Ratings:</strong>
                         <ul>
@@ -59,11 +58,21 @@
                 </li>
 
             </ul>
-
-            Rate This movie: 
-            @foreach(range(1,5) as $rating)
+Rate This movie: 
+<button>
+        <form action="">
+                <input type="radio" name="gender" value="male"> Male<br>
+                <input type="radio" name="gender" value="female"> Female<br>
+                <input type="radio" name="gender" value="other"> Other
+              </form>
+              
+</button>
+            
+        {{--  @foreach(range(1,5) as $rating)
         <a href="{{route('movies.show', ['movie' =>$movie->id, 'rating' => $rating])}}">{{$rating}}</a>
-        @endforeach
+        @endforeach  --}}
+
+    
         </div>
     </div>
 </div>
