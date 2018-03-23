@@ -45,6 +45,18 @@
     </select>
   </div>
 
+   {{-- Select actors --}}
+   <div>
+      Select actors:
+      <br>
+      <select name="actors[]" multiple="multiple">
+        @foreach($actors as $actor)
+        <option value="{{ $actor->id }}">{{$actor->namn}}</option>
+        @endforeach
+      </select>
+    </div>
+
+
   {{--  Select multiple genres  --}}
   <div> 
       Select Movie Genres:<br>

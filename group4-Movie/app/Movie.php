@@ -19,12 +19,17 @@ class Movie extends Model
         return $this->belongsToMany('App\Genre');
     }
 
-    public function users(Type $var = null)
+    public function users()
     {
         return $this->belongsToMany('App\User');
     }
 
     public function ratings() {
         return $this->hasMany('App\Rating');
+    }
+
+    public function actors()
+    {
+       return $this->belongsToMany('App\Actor', 'movie_actor');
     }
 }
