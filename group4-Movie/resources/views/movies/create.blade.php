@@ -48,9 +48,9 @@
   <div>
     Select actors:
     <br>
-    <select name="actor">
+    <select name="actors[]" multiple="multiple">
       @foreach($actors as $actor)
-      <option value="{{ $actor->id }}">{{ $actor->name }}</option>
+      <option value="{{ $actor->id }}">{{ $actor->namn }}</option>
       @endforeach
     </select>
   </div>

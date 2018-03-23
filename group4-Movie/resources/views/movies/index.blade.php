@@ -4,7 +4,7 @@
   <h3>My favourite movies</h3>
   @if(!Auth::guest())
   <button type="button" class="btn btn-outline-primary">
-    <a href="{{route('movies.create')}} ">Create new movies</button>
+    <a href="{{route('movies.create')}} ">Create new movies</a></button>
   @endif
 </div><br>
 
