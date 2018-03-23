@@ -11,7 +11,7 @@
 
     <div class="form-group">
 
-        <input type="text" class="form-control" name="name" value="{{$actor->namn}}" required><br>
+        <input type="text" class="form-control" name="namn" value="{{$actor->namn}}" required><br>
         
 
         <textarea class="form-control" name="info"  value="{{ $actor->info }}" required></textarea><br>
