@@ -48,7 +48,22 @@
                     <li> {{$actor->namn}}</li>
                     @endforeach
                 </ul> --}}
+
+                <li class="list-group-item">
+                        <strong>Ratings:</strong>
+                        <ul>
+                           @foreach ($movie->ratings as $rating)
+                               <li>{{ $rating->user->name }}: {{ $rating->rate }}</li>
+                           @endforeach
+                        </ul>
+                </li>
+
             </ul>
+
+            Rate This movie: 
+            @foreach(range(1,5) as $rating)
+        <a href="{{route('movies.show', ['movie' =>$movie->id, 'rating' => $rating])}}">{{$rating}}</a>
+        @endforeach
         </div>
     </div>
 </div>

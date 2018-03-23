@@ -23,4 +23,8 @@ class Movie extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function ratings() {
+        return $this->hasMany('App\Rating');
+    }
 }

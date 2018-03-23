@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Director;
 use App\Movie;
 use App\Genre;
-//use App\Actor;
+use App\Actor;
 
 use Illuminate\Http\Request;
 
@@ -34,14 +34,15 @@ class MovieController extends Controller
         $movies = Movie::orderBy('title')->get();
         $directors = Director::orderBy('name')->get();
         $genres = Genre::orderBy('name')->get();
-        //$actors = Actor::orderBy('namn')->get(); // NAMN not NAME from Rattanasak 
+        $actors = Actor::orderBy('namn')->get(); // NAMN not NAME from Rattanasak 
         
 // place this right after 'actors' => $actors with , after $genres
        
        return view('movies/create', [
         'movies' => $movies,
            'directors' => $directors, 
-           'genres' => $genres
+           'genres' => $genres,
+           'actors' => $actors
            ]);
     }
 
@@ -70,25 +71,8 @@ class MovieController extends Controller
         $movie->director_id = $movie_director;   
         $movie->save();
 
-        //  Rateable been to Movie model use rateable and the top
-
-        request()->validate(['rate' => 'required']);
-
-        $movie = Movie::find($request->id);
-
-
-
-        $rating = new \willvincent\Rateable\Rating;
-
-        $rating->rating = $request->rate;
-
-        $rating->user_id = auth()->user()->id;
-
-
-        $movie->ratings()->save($rating);
-
-
-        return redirect()->route('movies.index');
+        
+        
 
 
     }
@@ -118,6 +102,7 @@ class MovieController extends Controller
             'movie' => $movie, 
             'directors' =>Director::orderBy('name')->get(),
             'genres' =>Genre::orderBy('name')->get(),
+            'actors' =>Actor::orderBy('namn')->get(),
         ]);
 
     }
@@ -138,7 +123,7 @@ class MovieController extends Controller
         $movie_releaseyear = $request->input('releaseyear');
         $movie_director = $request->input('director');
         
-        //$movie->actors()->sync($request->input('actors'));
+        $movie->actors()->sync($request->input('actors'));
         $movie->genres()->sync($request->input('genres'));
         $movie->users()->sync($request->input('users'));
         
